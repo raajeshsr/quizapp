@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pollapp</title>
+</head>
+<body>
+<nav>
+
+<form action="{% url 'account:logout'%}" method="post">
+{% csrf_token %}
+<input type="submit" value="logout">
+</form>
+
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>
