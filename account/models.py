@@ -8,8 +8,8 @@ from django.contrib.auth.models import User
 
 
 class Result(models.Model):
-	user =models.ForeignKey(User)
-	mark=models.IntegerField()
+	user =models.OneToOneField(User)
+	mark=models.IntegerField(default=0)
 	test_date = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):

@@ -1,0 +1,16 @@
+body{
+	background-color: green;
+}
+
+#logout{
+
+	position:absolute;
+	top:0;
+	right:0;
+}
+#main{
+	background-color: white;
+	padding:10px;
+	margin:40px auto;
+	border:2px solid black;
+}
