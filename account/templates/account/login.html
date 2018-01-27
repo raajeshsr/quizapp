@@ -3,8 +3,8 @@
 <form action="{% url 'account:login' %}" method="post">
 {% csrf_token %}
 {{form}}
-{% if request.GET.next %}
-	<input type="hidden" name="next" value="{{request.GET.next}}">
+{% if error_message %}
+<p>{{error_message}}</p>
 {%endif%}
 <input type="submit" value="login">
 </form>

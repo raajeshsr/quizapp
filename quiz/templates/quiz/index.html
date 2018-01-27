@@ -1,14 +1,28 @@
 {%extends 'quiz/base.html' %}
 {%block body%}
-<form action="{% url 'quiz:validate' q.id  %}" method="GET">
-<label>{{q.question_text}}</label><br>
+
+<form action="{% url 'quiz:nextQuestion' question.id  %}" method="GET">
+<label>{{question.question_text}}</label><br>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{% for choice in q.choice_set.all %}
+{% for choice in question.choice_set.all %}
 
-<label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.choice_text}}"><br>
+<label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.choice_text}}" {% if choice.choice_text == saved_choice %} checked {%endif%}><br>
 
 {%endfor%}
+
+
+{% if question.id == last_question %}
+<input type="submit" value="submit">
+{% else %}
 <input type="submit" value="next">
+{%endif%}
 </form>
+
+{% if question.id != first_question %}
+<form action="{% url 'quiz:previousQuestion' question.id %}">
+<input type="submit" value="previous">
+</form>
+{%endif%}
+
 {%endblock%}

@@ -4,8 +4,9 @@ from django.contrib import admin
 from . import views
 app_name="quiz"
 urlpatterns = [
-    url(r'^$',views.index,name="index"),
-    url(r'^validate/(?P<pk>[0-9]+)$',views.validate,name="validate"),
-    #url(r'^disp/(?P<pk>[0-9]+)$',views.disp,name="disp"),
+    url(r'^(?P<pk>[0-9]+)$',views.index,name="index"),
+    url(r'^next/(?P<pk>[0-9]+)$',views.nextQuestion,name="nextQuestion"),
+    url(r'^previous/(?P<pk>[0-9]+)$',views.previousQuestion,name="previousQuestion"),
+    
     
 ]
