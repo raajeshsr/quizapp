@@ -2,20 +2,14 @@ from __future__ import unicode_literals
 from django.shortcuts import render,redirect
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
-<<<<<<< HEAD
 from .models import Question,Choice
 from account.models import UserProfile
 from account.models import UserChoice
 
-=======
-from account.models import Result
-from django.contrib.auth import login,logout
->>>>>>> 1f00947ae9f177659d47e592dbe34bcb5b25936f
 
 questions=Question.objects.all() 
 length=Question.objects.count()
 
-<<<<<<< HEAD
 
 first_question=questions[0].id
 last_question=questions[length-1].id
@@ -32,27 +26,6 @@ def previousQuestion(request,pk):
 	#getting previous question option
 	question=Question.objects.get(pk=user.current_question)
 	saved_choice=UserChoice.objects.get(user=current_user,question=question)
-=======
-q=questions[0]
-i=q.id	
-
-length=Question.objects.count()
-q=questions[length-1]
-last_question=q.id
-print last_question
-	
-def getQuestion():
-	global i
-	try:
-		q=Question.objects.get(pk=i)
-	except Question.DoesNotExist:
-		i+=1
-		q=getQuestion()
-		return q	
-	else:
-		i+=1
-		return q		
->>>>>>> 1f00947ae9f177659d47e592dbe34bcb5b25936f
 	
 	
 	if question.choice_set.get(choice_text=saved_choice).correct_choice:
@@ -68,7 +41,6 @@ def isLast(pk):
 	else: 
 		return False	
 
-<<<<<<< HEAD
 
 @login_required(login_url="/")  
 def index(request,pk):
@@ -138,33 +110,3 @@ def decrementMark(user):
 def deactivateUser(current_user):
 	current_user.is_active=False
 	current_user.save()
-=======
-@login_required(login_url="/account/login/")  
-def index(request):
-	user=request.user
-	obj,created = Result.objects.get_or_create(user=user)
-	print isLast()
-	if isLast():
-		mark=Result.objects.get(user=user).mark
-		return render(request,'quiz/result.html',{'mark':mark})
-	else:	
-		q=getQuestion()
-		return render(request,'quiz/index.html',{'q':q})
-
-
-@login_required(login_url="/account/login/")  
-def validate(request,pk):
-	#global length
-	pk=int(pk)	
-	q=Question.objects.get(pk=pk)
-	c= request.GET['choice']
-	ch=q.choice_set.get(choice_text=c)
-	
-	if ch.correct_choice:
-		user=request.user
-		r=Result.objects.get(user=user)
-		r.mark+=1
-		r.save()
-	
-	return redirect('quiz:index')	
->>>>>>> 1f00947ae9f177659d47e592dbe34bcb5b25936f
