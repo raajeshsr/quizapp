@@ -1,7 +1,8 @@
 {%extends 'quiz/base.html' %}
 {%block body%}
 
-<form action="{% url 'quiz:nextQuestion' question.id  %}" method="GET">
+<form action="{% url 'quiz:index' question.id  %}" method="POST">
+{% csrf_token %}
 <label>{{question.question_text}}</label><br>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -11,18 +12,17 @@
 
 {%endfor%}
 
+{% if question.id != first_question %}
+<input type="submit" value="previous" name='nav'>
+
+{%endif%}
 
 {% if question.id == last_question %}
-<input type="submit" value="submit">
+<input type="submit" value="submit" name='nav'>
 {% else %}
-<input type="submit" value="next">
+<input type="submit" value="next" name='nav'>
 {%endif%}
 </form>
 
-{% if question.id != first_question %}
-<form action="{% url 'quiz:previousQuestion' question.id %}">
-<input type="submit" value="previous">
-</form>
-{%endif%}
 
 {%endblock%}
