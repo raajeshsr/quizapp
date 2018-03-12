@@ -24,5 +24,19 @@
 {%endif%}
 </form>
 
-
 {%endblock%}
+
+{% block footer %}
+
+{% for q in selections %}
+{% if q.selected %}
+<div class="selected">{{ forloop.counter }}</div>			
+{%else%}
+<div class="unselected">{{ forloop.counter }}</div>			
+
+{%endif%}
+
+{%endfor%}	
+
+
+{% endblock %}

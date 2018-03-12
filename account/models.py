@@ -32,6 +32,6 @@ post_save.connect(create_user_profile,sender=User)
 class UserChoice(models.Model):
 	user=models.ForeignKey(User)
 	question=models.ForeignKey(Question)
-	choice_text=models.CharField(max_length=300)
+	choice_text=models.CharField(max_length=300,default="null")
 	def __str__(self):
 		return self.choice_text

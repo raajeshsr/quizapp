@@ -3,18 +3,29 @@
 <head>
 	<title>quizapp</title>
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
-	
+	<link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
 </head>
 <body>
+
 <h1>hi {{username}}</h1>
 <form id="logout" action="{% url 'account:logout'%}" method="post">
 {% csrf_token %}
 <input type="submit" value="logout">
 </form>
+
+
 <div id="main">
 {% block body %}
 {% endblock %}
 </div>
+
+<div class="container">
+{% block footer %}
+{% endblock %}
+</div>
+
+
+
+
 </body>
 </html>

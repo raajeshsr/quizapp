@@ -1,0 +1,37 @@
+body{
+	background-color: grey;
+}
+
+#logout{
+
+	position:absolute;
+	top:0;
+	right:0;
+}
+#main{
+	background-color: white;
+	padding:20px;
+	margin:40px auto;
+	border:2px solid black;
+}
+div.container{
+position:absolute;
+bottom:0px;
+right:0px;
+}
+div.unselected{
+display:inline;
+width:10px;
+height:10px;
+border:1px solid black;
+padding:5px;
+background-color:red;
+}
+div.selected{
+display:inline;
+width:10px;
+height:10px;
+border:1px solid black;
+padding:5px;
+background-color:green;
+}
