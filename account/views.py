@@ -11,7 +11,12 @@ def signup_view(request):
 	if(request.method=="POST"):
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
-			form.save()
+
+			registered_user=form.save()
+			user=UserProfile.objects.get(user=registered_user)
+			user.college=request.POST['college']
+			user.save()
+
 			return redirect('account:login')
 	else:	
 		form = UserCreationForm()
@@ -22,11 +27,18 @@ def login_view(request):
 		username =request.POST['username']	
 		password = request.POST['password']
 		user=authenticate(username=username,password=password)	
+
 		if user is not None:
+			if user.is_superuser:
+				userProfile=UserProfile.objects.all().exclude(user__is_superuser='True').order_by('mark').reverse()
+				return render(request,'quiz/marklist.html',{'userProfile':userProfile})	
+
+
+
 			if user.is_active:
 				current_question=UserProfile.objects.get(user=user).current_question	
 				login(request,user)
-				request.username=user.username
+				
 				return redirect('quiz:index',pk=current_question)
 			
 		else:
@@ -42,4 +54,4 @@ def login_view(request):
 
 def logout_view(request):
 	logout(request)
-	return render(request,'account/signup.html')
+	return redirect('account:login')

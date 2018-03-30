@@ -1,6 +1,9 @@
 {%extends 'quiz/base.html' %}
 {%block body%}
 
+<h1>hi {{username}}</h1>
+
+<div id="main">
 <form action="{% url 'quiz:index' question.id  %}" method="POST">
 {% csrf_token %}
 <label>{{question.question_text}}</label><br>
@@ -23,10 +26,9 @@
 <input type="submit" value="next" name='nav'>
 {%endif%}
 </form>
+</div>
 
-{%endblock%}
-
-{% block footer %}
+<div id="container">
 
 {% for q in selections %}
 {% if q.selected %}
@@ -37,6 +39,6 @@
 {%endif%}
 
 {%endfor%}	
-
+</div>
 
 {% endblock %}

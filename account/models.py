@@ -16,6 +16,7 @@ def get_first_question():
 class UserProfile(models.Model):
 	user =models.OneToOneField(User)
 	mark=models.IntegerField(default=0)
+	college=models.CharField(max_length=100,null=True)
 	test_date = models.DateTimeField(auto_now_add=True)
 	#test_completed = models.BooleanField(default=False)
 	current_question = models.IntegerField(default=get_first_question)

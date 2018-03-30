@@ -3,7 +3,8 @@
 <form action="{% url 'account:signup' %}" method="post">
 {% csrf_token %}
 {{form}}
-
+<br><br>
+<label>College Name: <input type="text" name="college"></label><br>
 <input type="submit" value="signup">
 </form>
 {%endblock%}
