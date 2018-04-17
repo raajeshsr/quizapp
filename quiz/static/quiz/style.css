@@ -1,37 +1,38 @@
-body{
-	background-color: grey;
-}
 
-#logout{
-
-	position:absolute;
-	top:0;
-	right:0;
-}
 #main{
-	background-color: white;
-	padding:20px;
-	margin:40px auto;
-	border:2px solid black;
+
+	border: none;
+		
 }
-div#container{
-position:absolute;
-bottom:0px;
-right:0px;
+.round
+{
+		border-radius: 50% 50%; 
 }
-div.unselected{
-display:inline;
-width:10px;
-height:10px;
-border:1px solid black;
-padding:5px;
-background-color:red;
+
+#question{
+
+	font-family: 'Source Code Pro', monospace;
+}	
+
+#palette{
+
+height:100px;
 }
-div.selected{
-display:inline;
-width:10px;
-height:10px;
-border:1px solid black;
-padding:5px;
-background-color:green;
+.unselected{
+
+display:inline-block;
+width:30px;
+height:30px;
+text-align: center;
+padding:5px 0 10px 0;
+background-color:#ff4d4d;
 }
+.selected{
+display:inline-block;
+width:30px;
+height:30px;
+text-align: center;
+padding:5px 0 10px 0;
+background-color:#4dffa6;
+}
+

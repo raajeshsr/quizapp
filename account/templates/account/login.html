@@ -1,4 +1,8 @@
 {% extends 'account/base.html' %}
+{%block title}
+<title>Login</title>
+
+{%endblock}
 {% block body %}
 <form action="{% url 'account:login' %}" method="post">
 {% csrf_token %}
@@ -6,6 +10,6 @@
 {% if error_message %}
 <p>{{error_message}}</p>
 {%endif%}
-<input type="submit" value="login">
+<input class="btn btn-primary" type="submit" value="login">
 </form>
 {%endblock%}

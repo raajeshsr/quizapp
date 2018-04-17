@@ -1,6 +1,6 @@
 {% extends 'quiz/base.html' %}
 {% block body %}
-<table border=1>
+<table class="table table-dark">
 <tr><th>NAME</th><th>COLLEGE</th><th>MARK</th></tr>
 {% for up in userProfile %}
 <tr><td>{{up.user.username}}</td><td>{{up.college}}</td><td>{{up.mark}}</td></tr>

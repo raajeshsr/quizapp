@@ -1,10 +1,13 @@
 {% extends 'account/base.html' %}
+{% block title%}
+<title>Signup</title>
+{%endblock%}
 {% block body %}
 <form action="{% url 'account:signup' %}" method="post">
 {% csrf_token %}
 {{form}}
 <br><br>
 <label>College Name: <input type="text" name="college"></label><br>
-<input type="submit" value="signup">
+<input class="btn btn-primary" type="submit" value="signup">
 </form>
 {%endblock%}
